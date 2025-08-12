@@ -2,6 +2,8 @@ pragma Singleton
 import QtQuick
 
 
+//add a proper color palette my eyes are bleeding
+
 QtObject {
     id: colors
     

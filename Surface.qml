@@ -28,8 +28,7 @@ Variants {
 
             anchors.top: true
             exclusiveZone: scope.modelData.height / 25 + 5 //not good
-            mask: Region {}
-            
+            mask: Region {}   
         }
 
         PanelWindow { 
@@ -47,8 +46,6 @@ Variants {
                 right: true
                 bottom: true
             }
-
-
 
             mask: Region {
                 regions: [
@@ -75,7 +72,6 @@ Variants {
             Launcher{
                 id: launcher
             }
-
         }
     }
 }

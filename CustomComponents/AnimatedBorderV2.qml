@@ -1,6 +1,8 @@
 import QtQuick
 import "../Services"
 
+
+
 Item{
     id: border
 
@@ -17,9 +19,16 @@ Item{
     clip: true
 
     signal animationFinished()
+    signal closingAnimationFinished()
 
-    Component.onCompleted: {
-        borderSequence.restart();
+    function openBorderSequence(){
+        closingBorderSequence.stop()
+        borderSequence.restart()
+    }
+
+    function closeBorderSequence(){
+        borderSequence.stop()
+        closingBorderSequence.restart()
     }
 
     Rectangle {
@@ -55,24 +64,26 @@ Item{
     }
 
 
-    SequentialAnimation { 
+    SequentialAnimation { //I should probably adjust the timings of the animations based on distance but its not a big deal
         id: borderSequence
 
         NumberAnimation {
             targets: [topEdge, bottomEdge]
             property: "implicitWidth"
-            from: 0
+            from: topEdge.implicitWidth
             to: actualWidth
             duration: animationDuration
             easing.type: Easing.OutCubic
         }
 
-        PauseAnimation { duration: 50 }
+        PauseAnimation { 
+            duration: topEdge.implicitWidth < actualWidth ? 50 : 0
+        }
 
         NumberAnimation {
             targets: [leftEdge, rightEdge]
             property: "implicitHeight"
-            from: 0
+            from: leftEdge.implicitHeight
             to: actualHeight
             duration: animationDuration
             easing.type: Easing.OutCubic
@@ -80,6 +91,36 @@ Item{
 
         onFinished: { 
             border.animationFinished()
+        }
+    }
+
+    SequentialAnimation{
+        id: closingBorderSequence
+
+        NumberAnimation {
+            targets: [topEdge, bottomEdge]
+            property: "implicitWidth"
+            from: topEdge.implicitWidth
+            to: leftEdge.implicitHeight > 0 ? lineWidth : 0
+            duration: animationDuration
+            easing.type: Easing.OutCubic
+        }
+
+        PauseAnimation { 
+            duration: leftEdge.implicitHeight > 0 ? 50 : 0
+        }
+
+        NumberAnimation {
+            targets: [leftEdge, rightEdge]
+            property: "implicitHeight"
+            from: leftEdge.implicitHeight
+            to: 0
+            duration: animationDuration
+            easing.type: Easing.OutCubic
+        }
+
+        onFinished: { 
+            border.closingAnimationFinished()
         }
     }
 }

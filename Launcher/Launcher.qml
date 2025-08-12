@@ -5,6 +5,7 @@ import QtQuick
 import QtQuick.Effects 
 import "../CustomComponents"
 
+//should be rewritten bc rn full spagetti code
 
 Item{ //temp solution to get the size of the launcher
 
@@ -15,8 +16,24 @@ Item{ //temp solution to get the size of the launcher
     Loader {
         id: loader
         active: false
+        property bool shouldBe: false
         asynchronous: true  
         anchors.centerIn: parent
+
+        onShouldBeChanged: {
+            if (!shouldBe) {
+                item.children[0].closeBorderSequence()
+            }
+            else if (shouldBe && status === Loader.Ready) {
+                item.children[0].openBorderSequence()
+            }
+        }
+
+        onLoaded: {
+            if (shouldBe) {
+                item.children[0].openBorderSequence()
+            }
+        }
         
         sourceComponent: Component {
             Item { //only here for specifiying the size of the launcher
@@ -25,6 +42,7 @@ Item{ //temp solution to get the size of the launcher
                 implicitHeight: 550                
 
                 AnimatedBorderV2 {
+                    id: border
                     anchors.centerIn: parent
 
                     actualWidth: contentArea.implicitWidth //this is done so we can clip things. There is probably a better way to do this.
@@ -36,11 +54,18 @@ Item{ //temp solution to get the size of the launcher
                         implicitHeight: contentArea.implicitHeight
                         z: -1
                     }
+
+                    onClosingAnimationFinished: {
+                        loader.active = false
+                    }
                 }
+
+                Keys.onEscapePressed: loader.shouldBe = false
 
                 HyprlandFocusGrab{ //unloads automatically
                     active: loader.active
-                    windows: [QsWindow.window] 
+                    windows: [QsWindow.window]
+                    onCleared: loader.shouldBe = false
                 }
             }
         }
@@ -51,8 +76,8 @@ Item{ //temp solution to get the size of the launcher
         appid: "test"
         name: "launcher"
         onPressed: {
-            loader.active = !loader.active
-            //console.log("launcher, active:", loader.active)
+            if(!loader.active) loader.active = true
+            loader.shouldBe = !loader.shouldBe
         }
     }
 }

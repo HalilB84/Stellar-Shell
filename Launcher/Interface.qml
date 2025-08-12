@@ -30,13 +30,10 @@ Rectangle{
 
             Component.onCompleted: {
                 forceActiveFocus() //idk why i need this but work work otherise
-                console.log("focus")
+                //console.log("focus") //potential issue with losing focus when clicking other ui elements
             }
 
             placeholderText: "Search..."
-
-            Keys.onEscapePressed: loader.active = false
-
         }
     }
 
@@ -56,6 +53,4 @@ Rectangle{
         border.color: "white"
         border.width: 2
     }
-
-   
 }
