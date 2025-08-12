@@ -15,7 +15,7 @@ Item{ //temp solution to get the size of the launcher
     Loader {
         id: loader
         active: false
-        asynchronous: true
+        asynchronous: true  
         anchors.centerIn: parent
         
         sourceComponent: Component {

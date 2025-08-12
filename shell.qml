@@ -14,13 +14,5 @@ ShellRoot {
 
     Surface {}
 
-    //Bar {}
-
-   // Osd{}
-
-    //Dashboard {}
-
-    //Launcher {}
-
     Lock {}
 }
