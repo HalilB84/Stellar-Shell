@@ -5,7 +5,11 @@ import QtQuick.Layouts
 import QtQuick.Particles
 import Quickshell
 import Quickshell.Wayland
+import Quickshell.Hyprland
 import "Bar"
+import "Dashboard"
+import "Osd"
+import "Launcher"
 
 
 Variants {
@@ -23,7 +27,7 @@ Variants {
             color: "transparent"
 
             anchors.top: true
-            exclusiveZone: scope.modelData.height / 25 + 5
+            exclusiveZone: scope.modelData.height / 25 + 5 //not good
             mask: Region {}
             
         }
@@ -45,14 +49,31 @@ Variants {
             }
 
 
-            mask: Region{
-                item: bar
 
+            mask: Region {
+                regions: [
+                    Region { item: bar },
+                    Region { item: dashboard },
+                    Region { item: osd },
+                    Region { item: launcher }
+                ]
             }
 
             Bar{
                 id: bar
                 implicitHeight: scope.modelData.height / 25
+            }
+
+            Dashboard{
+                id: dashboard
+            }
+
+            Osd{
+                id: osd
+            }
+
+            Launcher{
+                id: launcher
             }
 
         }

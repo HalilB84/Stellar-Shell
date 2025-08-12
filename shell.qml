@@ -16,11 +16,11 @@ ShellRoot {
 
     //Bar {}
 
-    Osd{}
+   // Osd{}
 
-    Dashboard {}
+    //Dashboard {}
 
-    Launcher {}
+    //Launcher {}
 
-    //Lock {}
+    Lock {}
 }
