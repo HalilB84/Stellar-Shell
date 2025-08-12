@@ -13,7 +13,7 @@ Variants {
     model: Quickshell.screens
 
     PanelWindow {
-        property var modelData
+        required property var modelData
         property bool expanded: true
         WlrLayershell.layer: WlrLayer.Top
         WlrLayershell.exclusionMode: ExclusionMode.Ignore
@@ -61,28 +61,32 @@ Variants {
 
                 Behavior on implicitWidth {
                     NumberAnimation {
-                        duration: 400
+                        duration: 600
                         easing.type: Easing.OutCubic
                     }
                 }
-          
+
+                Rectangle { // background. most likely shouldnt be here, background should be set by the child
+                    anchors.fill: parent
+                    color: "black"
+                }   
+
+                Adjustables {
+                    id: adjustables
+                    anchors.right: parent.right
+                }
+
                 AnimatedBorder {     
                     anchors.fill: parent
                     
                     lineWidth: 2
-                    isSolid: true
                     lineColor: Colors.cluGlow
  
                     onAnimationFinished: {
                         expanded = false
 
                     }
-                }          
-
-                Adjustables {
-                    id: adjustables
-                    anchors.right: parent.right
-                }
+                }       
             }                    
         }
     }

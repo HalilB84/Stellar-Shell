@@ -84,7 +84,6 @@ Item {
         id: workspaceText
         anchors.centerIn: parent
         animatedText: `WS_${String(workspace.workspaceNumber).padStart(2, '0')}`
-        font.family: "Courier New, monospace"
         font.pixelSize: parent.implicitHeight * 0.35
         font.weight: Font.Bold
         color: {

@@ -5,17 +5,22 @@ import "Bar"
 import "Osd"
 import "Dashboard"
 import "Background"
+import "Launcher"
 import "Lock"
 
 ShellRoot {
 
     Background {}
 
-    Bar {}
+    Surface {}
+
+    //Bar {}
 
     Osd{}
 
     Dashboard {}
 
-    Lock {}
+    Launcher {}
+
+    //Lock {}
 }

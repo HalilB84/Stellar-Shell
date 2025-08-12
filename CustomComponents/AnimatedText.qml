@@ -1,5 +1,8 @@
 import QtQuick
 
+//there is a bug somewhere, sometimes the text has matrix chars in it when it shouldnt
+
+
 Text {
     id: text
 

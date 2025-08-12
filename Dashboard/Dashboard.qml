@@ -17,8 +17,9 @@ Variants {
     model: Quickshell.screens
 
     PanelWindow {
-        property var modelData
+        required property var modelData
         property bool expanded: true 
+
         id: dashboard
       
         WlrLayershell.layer: WlrLayer.Top
@@ -64,16 +65,20 @@ Variants {
 
                 Behavior on implicitWidth {
                     NumberAnimation {      
-                        duration: 400
+                        duration: 600 
                         easing.type: Easing.OutCubic
                     }
+                }
+
+                Media {
+                    id: media
                 }
           
                 AnimatedBorder {     
                     anchors.fill: parent        
                     
                     lineWidth: 2
-                    isSolid: true
+                    isSolid: false
                     lineColor: Colors.cluGlow
 
                     onAnimationFinished: { 
@@ -81,9 +86,6 @@ Variants {
                     }
                 }
 
-                Media {
-                    id: media
-                }
             }
 
             //Should this be here? The answer to that is probably no, but idk how to do it otherwise

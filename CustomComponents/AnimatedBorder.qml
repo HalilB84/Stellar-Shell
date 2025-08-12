@@ -1,6 +1,5 @@
 import QtQuick
 import QtQuick.Effects
-import "../Services"
 
 Item { //assumes the size never changes, gotta fix that somehow, for now dont change size when animating
     id: border
@@ -27,7 +26,7 @@ Item { //assumes the size never changes, gotta fix that somehow, for now dont ch
         borderSequence.restart();
     }
     
-    Rectangle { 
+    Rectangle { //to delete
         anchors.fill: parent
         color: isSolid ? "black" : "transparent"  //make the whole rectangle optional like wtf
     }
@@ -117,7 +116,7 @@ Item { //assumes the size never changes, gotta fix that somehow, for now dont ch
             targets: [topEdge, bottomEdge]
             property: "implicitWidth"
             from: 0
-            to: border.width - lineWidth
+            to: border.width - lineWidth * 2   
             duration: animationDuration
             easing.type: Easing.OutCubic
         }
@@ -132,8 +131,8 @@ Item { //assumes the size never changes, gotta fix that somehow, for now dont ch
         }
 
         onFinished: { //for the case that the size change but this should be rewritten in the long run
-            topEdge.implicitWidth = Qt.binding(function() { return border.width - lineWidth })
-            bottomEdge.implicitWidth = Qt.binding(function() { return border.width - lineWidth })
+            topEdge.implicitWidth = Qt.binding(function() { return border.width - lineWidth * 2})
+            bottomEdge.implicitWidth = Qt.binding(function() { return border.width - lineWidth * 2})
             leftEdge.implicitHeight = Qt.binding(function() { return border.height })
             rightEdge.implicitHeight = Qt.binding(function() { return border.height })
             border.animationFinished()

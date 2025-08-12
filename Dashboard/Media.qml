@@ -18,7 +18,10 @@ Item {
     implicitWidth: mediaCol.implicitWidth + 130
     implicitHeight: mediaCol.implicitHeight + 150
 
-    FlowingShader {}
+    FlowingShader {
+        anchors.fill: parent
+        anchors.margins: 2
+    }
    
     ColumnLayout {
         id: mediaCol
@@ -78,8 +81,7 @@ Item {
             //animationStyle: AnimatedText.AnimationStyle.None ///FIX
             //animationDuration: 50
             Layout.alignment: Qt.AlignHCenter
-            Layout.fillWidth: true
-            horizontalAlignment: Text.AlignHCenter
+            Layout.maximumWidth: mainContainer.implicitWidth
             font.pixelSize: mainContainer.implicitWidth * 0.055
             elide: Text.ElideRight
         }
@@ -90,8 +92,7 @@ Item {
             //animationStyle: AnimatedText.AnimationStyle.None ///FIX
             //animationDuration: 50
             Layout.alignment: Qt.AlignHCenter
-            Layout.fillWidth: true
-            horizontalAlignment: Text.AlignHCenter
+            Layout.maximumWidth: mainContainer.implicitWidth
             font.pixelSize: mainContainer.implicitWidth * 0.045
 
             elide: Text.ElideRight
@@ -103,8 +104,7 @@ Item {
             //animationStyle: AnimatedText.AnimationStyle.None ///FIX
             //animationDuration: 50
             Layout.alignment: Qt.AlignHCenter
-            Layout.fillWidth: true
-            horizontalAlignment: Text.AlignHCenter
+            Layout.maximumWidth: mainContainer.implicitWidth
             font.pixelSize: mainContainer.implicitWidth * 0.045
             elide: Text.ElideRight
         }
@@ -118,15 +118,19 @@ Item {
             value: Players.active?.position || 1 
             handle: null
 
+
             background: Rectangle {
                 color: "white" 
                 implicitHeight: mainContainer.implicitHeight / 40
+
+                radius: 5
 
                 Rectangle {
                     color: Colors.cluGlow
                     anchors.left: parent.left
                     implicitHeight: parent.implicitHeight
                     implicitWidth: slider.value/slider.to * parent.width
+                    radius: parent.radius
 
                     Behavior on implicitWidth {
                         NumberAnimation {

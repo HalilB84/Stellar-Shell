@@ -47,7 +47,7 @@ Item {
             }
             
             size: 8
-            sizeVariation: 1
+            sizeVariation: 2
         }
         
         Emitter {
@@ -77,7 +77,7 @@ Item {
                 magnitudeVariation: 0
             }
             
-            size: 25
+            size: 0 //DISABLED FOR NOQ
             sizeVariation: 0
         }
         
