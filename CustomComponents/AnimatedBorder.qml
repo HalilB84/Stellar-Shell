@@ -21,8 +21,8 @@ Item { //assumes the size never changes, gotta fix that somehow, for now dont ch
 
     function startAnimation() {        
         if (isFlickering) {
-            flickerAnimation.restart();
-        }
+            flickerAnimation.restart(); 
+        } 
         borderSequence.restart();
     }
     
@@ -31,8 +31,8 @@ Item { //assumes the size never changes, gotta fix that somehow, for now dont ch
         color: isSolid ? "black" : "transparent"  //make the whole rectangle optional like wtf
     }
     
-    Rectangle {
-        id: leftEdge
+    Rectangle {  
+        id: leftEdge 
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter //for the funzies
         implicitWidth: lineWidth 

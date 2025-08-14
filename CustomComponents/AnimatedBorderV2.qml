@@ -2,7 +2,6 @@ import QtQuick
 import "../Services"
 
 
-
 Item{
     id: border
 

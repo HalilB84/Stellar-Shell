@@ -1,0 +1,17 @@
+- switch to layout completely - this requires me to understand layouts first
+- fix the incosistent height/implicitheight relationship
+
+- make launcher
+- make notif
+- make lock
+
+
+- finish and rework bar
+
+- rework and finish dashboard -> new components
+- rework and finish osd -> new components
+
+
+- optimize and unique effects as we go
+
+- settings panel

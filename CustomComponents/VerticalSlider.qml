@@ -32,7 +32,7 @@ Column {
             anchors.centerIn: parent
             animatedText: Math.round(slider.value).toString()
             animationStyle: AnimatedText.AnimationStyle.Matrix
-            font.pixelSize: parent.implicitWidth * 0.35
+            font.pixelSize: parent.width * 0.35
             color: verticalSlider.glowColor
         }
        

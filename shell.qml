@@ -9,10 +9,9 @@ import "Launcher"
 import "Lock"
 
 ShellRoot {
-
-    Background {}
-
+    Background {}  
+ 
     Surface {}
 
     Lock {}
-}
+}  

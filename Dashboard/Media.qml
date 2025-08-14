@@ -128,7 +128,7 @@ Item {
                 Rectangle {
                     color: Colors.cluGlow
                     anchors.left: parent.left
-                    implicitHeight: parent.implicitHeight
+                    implicitHeight: parent.height
                     implicitWidth: slider.value/slider.to * parent.width
                     radius: parent.radius
 
@@ -171,7 +171,7 @@ Item {
                     anchors.centerIn: parent
                     text: "⏮"
                     color: (Players.active?.canGoPrevious ?? false) ? "white" : "gray"
-                    font.pixelSize: parent.implicitHeight 
+                    font.pixelSize: parent.height 
                 }
                 
                 MouseArea {
@@ -190,7 +190,7 @@ Item {
                     anchors.centerIn: parent
                     text: Players.active?.isPlaying ? "⏸" : "▶"
                     color: Players.active ? "white" : "gray"
-                    font.pixelSize: parent.implicitHeight 
+                    font.pixelSize: parent.height 
                 }
                 
                 MouseArea {
@@ -210,7 +210,7 @@ Item {
                     anchors.centerIn: parent
                     text: "⏭"
                     color: (Players.active?.canGoNext ?? false) ? "white" : "gray"
-                    font.pixelSize: parent.implicitHeight 
+                    font.pixelSize: parent.height 
                 }
                 
                 MouseArea {
