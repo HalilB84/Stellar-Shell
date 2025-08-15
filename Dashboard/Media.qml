@@ -12,7 +12,7 @@ import "../Background"
 //because of how layer and multieffect interacts, but for now it works
 
 //also need to fix the random width dependents
-//needs more creative ideas for the slider 
+//needs more creative ideas for the slider and icons
 
 Item {
     implicitWidth: mediaCol.implicitWidth + 130

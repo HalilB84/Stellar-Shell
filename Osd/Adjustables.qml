@@ -12,8 +12,6 @@ Item{
     implicitWidth: sliderRow.implicitWidth + 40
     implicitHeight: sliderRow.implicitHeight + 40
 
-    
-
     Row {  
         id: sliderRow 
         anchors.centerIn: parent

@@ -30,7 +30,7 @@ Scope {
 
             WlSessionLockSurface {
                 id: lockSurface
-                color: "black"
+                color: "transparent"
 
                 /*ScreencopyView {
                 id: background
@@ -50,55 +50,11 @@ Scope {
                 }
             }*/
 
-                property int numRectangles: 8
-                property real baseWidth: 300
-                property real maxWidth: screen.width
-                property real widthIncrement: (maxWidth - baseWidth) / (numRectangles - 1)
+                Diamond{
+                    anchors.centerIn: parent
+                    
+                   
 
-                Repeater {
-                    model: numRectangles
-                    AnimatedBorder {
-                        id: rect
-                        required property int modelData
-                        
-                        property real aspectRatio: screen.width / screen.height
-                        property real currentWidth: baseWidth + (modelData * widthIncrement)
-                        property real currentHeight: currentWidth / aspectRatio
-                        
-                         width: currentWidth
-                         height: currentHeight
-                         anchors.centerIn: parent
-                         isFlickering: false 
-                                                  
-                         rotation: modelData % 2 === 1 ? 180 : 0
-                         
-
-                         animationDuration: 500 + (modelData * 50)
-                        
-                        lineColor: Colors.cluGlow
-                        opacity: 0
-                                                 
-                        SequentialAnimation {
-                            id: lightUpAnimation
-                            loops: 1
-                            
-                            PauseAnimation {
-                                duration: modelData * 200 
-                            }
-                            
-                            NumberAnimation {
-                                target: rect
-                                property: "opacity"
-                                from: 0
-                                to: 1
-                                duration: 600
-                            }
-                        }
-                        
-                        Component.onCompleted: {
-                            lightUpAnimation.start()
-                        }
-                    }
                 }
 
                 Input {

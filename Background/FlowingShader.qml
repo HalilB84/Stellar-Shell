@@ -26,7 +26,7 @@ ShaderEffect {
         return 0.0
     }
     
-    // Custom time idk how stable this is 
+    // Custom time idk how stable this is  //not stable at all lmao
     Timer {
         running: true
         repeat: true

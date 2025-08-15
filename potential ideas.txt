@@ -1,10 +1,11 @@
-particles floating
-
 // Floating particles -> done via particles -> needs improvement
 
 // Animated line from center expanding -> rotating to a full circle -> revealing contents as rotating
 
 // funny business with the border colors
+
+// lock screen is bunch of 45 degree rotated square that scale in/out similar to flicko's yorha and the steam banner
+// this would also include color and scale animation pased on pam context/opening/closing
 
 
 Down the road:

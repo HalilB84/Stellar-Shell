@@ -61,8 +61,6 @@ Item{ //temp solution to get the size of the launcher
                     }
                 }
 
-                Keys.onEscapePressed: loader.shouldBe = false
-
                 HyprlandFocusGrab{ //unloads automatically
                     active: loader.active && loader.shouldBe
                     windows: [QsWindow.window]
@@ -78,6 +76,14 @@ Item{ //temp solution to get the size of the launcher
         onReleased: {
             if(!loader.active) loader.active = true
             loader.shouldBe = !loader.shouldBe
+        }
+    }
+
+    GlobalShortcut{
+        appid: "test"
+        name: "launcherInerrupt"
+        onReleased: {
+            
         }
     }
 }

@@ -1,7 +1,8 @@
 - switch to layout completely - this requires me to understand layouts first
 - fix the incosistent height/implicitheight relationship
 
-- make launcher
+
+- make launcher -> mvp done but might need rework
 - make notif
 - make lock
 

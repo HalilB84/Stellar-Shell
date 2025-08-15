@@ -5,7 +5,10 @@ import QtQuick.Controls
 import Quickshell.Widgets
 
 import "../Services"
-import "fuzzysort.js" as Fuzzy
+import "../CustomComponents"
+import "../Services/fuzzysort.js" as Fuzzy
+
+//cool but needs work bc its kinda ugly rn
 
 Rectangle{
     id: background
@@ -57,7 +60,7 @@ Rectangle{
         TextField{
             id: searchField
             anchors.fill: parent
-            anchors.margins: 10
+            anchors.margins: 5
             
             background: null
             
@@ -73,6 +76,10 @@ Rectangle{
             onTextChanged: {
                 listView.model.values = background.searchApps(text);
                 listView.currentIndex = 0; 
+            }
+
+            Keys.onEscapePressed: {
+                loader.shouldBe = false
             }
 
             Keys.onUpPressed: {
@@ -129,7 +136,7 @@ Rectangle{
             }
 
             spacing: 5
-            currentIndex: 0
+           
 
             highlightFollowsCurrentItem: true
             highlightMoveDuration: 100
@@ -140,17 +147,40 @@ Rectangle{
                 anchors.left: parent?.left
                 anchors.right: parent?.right
 
-                anchors.margins: 5
+                anchors.rightMargin: 5
+                anchors.leftMargin: 5
+                
 
-                height: 50
+                implicitHeight: 50 //fix 
 
                 color: "transparent"
                 property bool hovered: false
-                border.color: listView.currentIndex === index || hovered ? Colors.cluGlow : "white"
+                property bool active: listView.currentIndex === index
+                border.color: active || hovered ? Colors.cluGlow : "white"
                 border.width: 1
     
                 required property var modelData //coming from model
                 required property int index //coming from list
+
+
+               
+                Loader {
+                    anchors.fill: parent
+                    anchors.topMargin: 1
+                    anchors.leftMargin: 1
+                    anchors.rightMargin: 1
+                    anchors.bottomMargin: 2
+                    
+                    active: app.active
+                    asynchronous: false
+                    sourceComponent: Diamond {
+                        //anchors.fill: parent
+                        tile: 10
+                        gap: 5
+                        z: -1
+                    }
+                }
+
                 
                 MouseArea {
                     anchors.fill: parent
