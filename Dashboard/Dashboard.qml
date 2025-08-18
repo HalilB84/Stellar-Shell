@@ -10,9 +10,6 @@ import Quickshell.Widgets
 import "../Services"
 import "../CustomComponents"    
 
-
-
-
 Item {
     id: contentArea
     anchors.left: parent.left   
@@ -32,7 +29,6 @@ Item {
         id: expandedContent      
         
         visible: implicitWidth > 0
-
         clip: true  
                         
         implicitWidth: expanded ? media.implicitWidth  : 0 // will fix 
@@ -60,7 +56,6 @@ Item {
                 expanded = false
             }
         }
-
     }
 
     //Should this be here? The answer to that is probably no, but idk how to do it otherwise
@@ -83,7 +78,6 @@ Item {
             anchors.top: parent.top
             anchors.topMargin: modelData * (implicitHeight + 2)  
             
-
             Behavior on actualWidth {
                 NumberAnimation {
                     duration: 500

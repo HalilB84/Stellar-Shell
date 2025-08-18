@@ -1,6 +1,11 @@
+Fixes:
 - switch to layout completely - this requires me to understand layouts first
 - fix the incosistent height/implicitheight relationship
+- sizes should be either set by parent or the child. Currently its a mix. is that fine?
 
+
+
+Roadmap:
 
 - make launcher -> mvp done but might need rework
 - make notif

@@ -41,5 +41,4 @@ Item{
             glowColor: Colors.cluGlow
         } 
     }
-
 }

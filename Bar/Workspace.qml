@@ -16,11 +16,9 @@ Item {
     implicitWidth: 75 // bad
     implicitHeight: bar.height - 12
     
-    // Global border color because otherwise is breaks? Learn how reactive bindings work, nvm they simple
     property color borderColor: workspace.isActive ? Colors.cluGlow : (workspace.isHovered ? Colors.cluGlow + "60" : Colors.cluGlow + "10")
     property real slideProgress: 0.0
     property real fadeOpacity: 1.0
-
     
     onIsActiveChanged: {
         if (workspace.isActive) {
@@ -33,7 +31,6 @@ Item {
         } 
     }
     
-    
     AnimatedBorder {
         id: borderAnimation
         anchors.fill: parent
@@ -41,6 +38,7 @@ Item {
         lineWidth: 2
     }
 
+    //all below to be removed and redone
 
     //aessthetic only wtf am i doing
     Rectangle {
@@ -73,7 +71,7 @@ Item {
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.bottomMargin: borderAnimation.lineWidth //this looks cooler
+        anchors.bottomMargin: borderAnimation.lineWidth 
 
         implicitHeight: (parent.height - borderAnimation.lineWidth * 2) * workspace.slideProgress 
         color: workspace.borderColor
@@ -122,7 +120,6 @@ Item {
             to: 1.0
             duration: 400
             easing.type: Easing.OutCubic
-     
         }
         
         NumberAnimation {

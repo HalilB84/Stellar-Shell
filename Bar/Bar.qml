@@ -10,12 +10,9 @@ import QtQuick.Particles
 import "../Services"
 import "../CustomComponents"
 
-
-
 Item{
     id: bar
         
-
     anchors.top: parent.top
     anchors.left: parent.left
     anchors.right: parent.right
@@ -24,8 +21,6 @@ Item{
     anchors.leftMargin: 5
     anchors.rightMargin: 5 
     
-
-    //this is the border
     AnimatedBorder {
         id: border
         anchors.fill: parent
@@ -35,18 +30,15 @@ Item{
 
         clip: true
 
-            Galaxy {
-                anchors.fill: parent
-                regularEmitRate: 400
-                speederEmitRate: 10
-                regularSpeed: 8
-                speederSpeed: 15
-                enabled: true
+        Galaxy {
+            anchors.fill: parent
+            regularEmitRate: 400
+            speederEmitRate: 10
+            regularSpeed: 8
+            speederSpeed: 15
+            enabled: true
         }  
     }
-
-
-    
 
     Workspaces {
         id: workspaces
@@ -55,7 +47,7 @@ Item{
         anchors.verticalCenter: parent.verticalCenter
     }
 
-    // Music visualization - Dots //experimenting with this
+    // visualiser to be removed
     Repeater {            
         model: 30 
 

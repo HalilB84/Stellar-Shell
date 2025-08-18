@@ -16,7 +16,7 @@ Scope {
 
     LazyLoader {
         id: loader
-
+        
         WlSessionLock {
             id: lock
 
@@ -49,14 +49,7 @@ Scope {
                     
                 }
             }*/
-
-                Diamond{
-                    anchors.centerIn: parent
-                    
-                   
-
-                }
-
+               
                 Input {
                     lock: lock
                     anchors.centerIn: parent

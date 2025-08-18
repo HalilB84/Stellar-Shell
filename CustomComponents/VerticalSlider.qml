@@ -35,7 +35,6 @@ Column {
             font.pixelSize: parent.width * 0.35
             color: verticalSlider.glowColor
         }
-       
     }
 
     Slider {
@@ -50,9 +49,7 @@ Column {
         to: parent.to
 
         value: Audio.volume * 100  
-        onMoved: Audio.setVolume(value / 100.0)  //lols
-
-
+        onMoved: Audio.setVolume(value / 100.0)  //Will remove this soon
 
         handle: null
 
@@ -75,7 +72,6 @@ Column {
                     shadowColor: verticalSlider.glowColor
                     shadowScale: 1.05  
                 }
-
 
                 Behavior on implicitHeight {
                     NumberAnimation {

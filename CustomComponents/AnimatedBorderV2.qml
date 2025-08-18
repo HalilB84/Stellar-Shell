@@ -2,6 +2,8 @@ import QtQuick
 import "../Services"
 
 
+//Technically this is no different than a transparent rectangle with a border but ig it gives me more control over the animation
+
 Item{
     id: border
 

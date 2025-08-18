@@ -85,6 +85,7 @@ Item {
             font.pixelSize: mainContainer.implicitWidth * 0.055
             elide: Text.ElideRight
         }
+
         GlowText {
             id: album
             text: (Players.active?.trackAlbum ?? "No media") || "Unknown album"
@@ -97,6 +98,7 @@ Item {
 
             elide: Text.ElideRight
         }
+
         GlowText {
             id: artist
             text: (Players.active?.trackArtist ?? "No media") || "Unknown artist"
@@ -117,7 +119,6 @@ Item {
             to: Players.active?.length || 0
             value: Players.active?.position || 1 
             handle: null
-
 
             background: Rectangle {
                 color: "white" 
@@ -229,7 +230,6 @@ Item {
             onTriggered: Players.active?.positionChanged()
         }
     }
-    
 
     AnimatedCircle {
         //centerY: parent.height

@@ -9,6 +9,7 @@ import "../CustomComponents"
 import "../Services/fuzzysort.js" as Fuzzy
 
 //cool but needs work bc its kinda ugly rn
+//fix child boxes randomly clipping?
 
 Rectangle{
     id: background
@@ -71,6 +72,7 @@ Rectangle{
 
             placeholderText: "Search..."
             placeholderTextColor: Colors.cluGlow
+            font.pixelSize: parent.height * 0.26
             color: Colors.cluGlow
             
             onTextChanged: {
@@ -119,7 +121,6 @@ Rectangle{
         border.color: "white"
         border.width: 2
 
-
         ListView{
             
             id: listView
@@ -131,15 +132,22 @@ Rectangle{
 
             clip: true
             
-            model: ScriptModel { //once again qs saves me :D
+            model: ScriptModel { //once again qs saves me :D 
                 values: background.searchApps("") // Start with all apps
             }
 
+            Component.onCompleted: {
+                listView.positionViewAtIndex(0, ListView.Center) // Need this because preferredHighlightBegin bugs it
+            }
+
             spacing: 5
-           
 
             highlightFollowsCurrentItem: true
             highlightMoveDuration: 100
+
+            highlightRangeMode: ListView.ApplyRange
+            preferredHighlightBegin: height * 0.5 - 25
+            preferredHighlightEnd: height * 0.5 + 25
 
             delegate: Rectangle{
                 id: app
@@ -149,43 +157,23 @@ Rectangle{
 
                 anchors.rightMargin: 5
                 anchors.leftMargin: 5
-                
-
+ 
                 implicitHeight: 50 //fix 
-
+            
                 color: "transparent"
                 property bool hovered: false
-                property bool active: listView.currentIndex === index
+                property bool active: ListView.isCurrentItem  
                 border.color: active || hovered ? Colors.cluGlow : "white"
                 border.width: 1
     
                 required property var modelData //coming from model
                 required property int index //coming from list
 
-
-               
-                Loader {
-                    anchors.fill: parent
-                    anchors.topMargin: 1
-                    anchors.leftMargin: 1
-                    anchors.rightMargin: 1
-                    anchors.bottomMargin: 2
-                    
-                    active: app.active
-                    asynchronous: false
-                    sourceComponent: Diamond {
-                        //anchors.fill: parent
-                        tile: 10
-                        gap: 5
-                        z: -1
-                    }
-                }
-
+                //something in the background that is dynamic
                 
                 MouseArea {
-                    anchors.fill: parent
+                    anchors.fill: parent 
                     onClicked: {
-                        listView.currentIndex = app.index
                         //console.log("Selected:", app.modelData.name)
                     }
                     

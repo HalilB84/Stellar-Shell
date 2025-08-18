@@ -12,7 +12,6 @@ Text {
     font.pixelSize: 14
     font.weight: Font.Bold
     
-    // glowwwwwwwwwww
     layer.enabled: true
     layer.effect: MultiEffect {
         shadowEnabled: true

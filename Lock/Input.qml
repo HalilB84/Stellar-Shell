@@ -23,11 +23,6 @@ AnimatedBorder {
     
     focus: true
     
-    onFocusChanged: {
-        if (!focus)
-            focus = true;
-    }
-    
     Keys.onPressed: event => {
         if (pam.active)
             return;
@@ -101,7 +96,7 @@ AnimatedBorder {
             if (pamState) return "red"
             return Colors.cluGlow
         }
-        font.pixelSize: 16
+        font.pixelSize: parent.height * 0.30
         
         opacity: input.passwordBuffer ? 0 : 1
         
